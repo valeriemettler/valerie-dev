@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valerie Mettler — Software Engineer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    /* --- NAV --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .logo span { color: #6c63ff; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    /* --- HERO --- */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero .greeting {
+      color: #6c63ff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #999;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+    .cta-row {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #6c63ff; color: #fff; }
+    .btn-secondary { background: #1a1a1a; color: #ccc; border: 1px solid #2a2a2a; }
+
+    /* --- PROJECTS --- */
+    .projects {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .project-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: #333; }
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.5;
+    }
+    .tech-tags {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 0.7rem;
+      background: #1a1a2e;
+      color: #6c63ff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* --- RICKROLL OVERLAY --- */
+    #rickroll {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #rickroll iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
+    /* fade-in animation for portfolio */
+    .fade-in {
+      animation: fadeIn 0.6s ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Legit-looking portfolio -->
+  <nav class="fade-in">
+    <div class="logo">valerie<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero fade-in" style="animation-delay: 0.15s">
+    <p class="greeting">Hi, I'm Valerie</p>
+    <h1>I build things for the web.</h1>
+    <p>Software engineer focused on building clean, performant applications. Currently exploring AI tooling and developer experience.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">View Projects</a>
+      <a class="btn btn-secondary" href="#">Get in Touch</a>
+    </div>
+  </section>
+
+  <section class="projects fade-in" style="animation-delay: 0.3s">
+    <p class="section-label">Selected Projects</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>DataSync CLI</h3>
+        <p>A lightweight CLI for syncing datasets across cloud providers with automatic conflict resolution.</p>
+        <div class="tech-tags">
+          <span class="tag">Python</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Click</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Pulse Dashboard</h3>
+        <p>Real-time monitoring dashboard for microservices health checks and alerting.</p>
+        <div class="tech-tags">
+          <span class="tag">React</span>
+          <span class="tag">D3.js</span>
+          <span class="tag">WebSocket</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>CodeReview Bot</h3>
+        <p>GitHub bot that provides automated code review suggestions using static analysis.</p>
+        <div class="tech-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">GitHub API</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>QueryForge</h3>
+        <p>Visual SQL query builder with schema introspection and query optimization hints.</p>
+        <div class="tech-tags">
+          <span class="tag">Vue</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Rust</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The trap -->
+  <div id="rickroll"></div>
+
+  <script>
+    // Trap the back button
+    history.pushState(null, '', location.href);
+    history.pushState(null, '', location.href);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, '', location.href);
+    });
+
+    // Spring the rickroll after 3 seconds
+    setTimeout(function () {
+      window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+    }, 3000);
+  </script>
+
+</body>
+</html>
