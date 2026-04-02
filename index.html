@@ -231,7 +231,14 @@
 
     // Spring the rickroll after 3 seconds
     setTimeout(function () {
-      window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      var overlay = document.getElementById('rickroll');
+      overlay.style.display = 'flex';
+      // Use youtube-nocookie for better embed compatibility
+      overlay.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1&playlist=dQw4w9WgXcQ&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      // Block escape key and tab
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.key === 'Tab') e.preventDefault();
+      });
     }, 3000);
   </script>
 
