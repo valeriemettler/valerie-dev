@@ -138,10 +138,10 @@
       justify-content: center;
       flex-direction: column;
     }
-    #rickroll iframe {
+    #rickroll video {
       width: 100vw;
       height: 100vh;
-      border: none;
+      object-fit: cover;
     }
 
     /* fade-in animation for portfolio */
@@ -233,11 +233,17 @@
     setTimeout(function () {
       var overlay = document.getElementById('rickroll');
       overlay.style.display = 'flex';
-      // Use youtube-nocookie for better embed compatibility
-      overlay.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1&playlist=dQw4w9WgXcQ&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-      // Block escape key and tab
+      overlay.innerHTML = '<video src="rick-small.mp4" autoplay loop playsinline></video>';
+      // Also try to unmute after a click anywhere (browsers block autoplay audio)
+      var vid = overlay.querySelector('video');
+      vid.muted = true;
+      vid.play();
+      document.addEventListener('click', function() {
+        vid.muted = false;
+      }, { once: true });
+      // Block escape key
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' || e.key === 'Tab') e.preventDefault();
+        if (e.key === 'Escape') e.preventDefault();
       });
     }, 3000);
   </script>
