@@ -143,27 +143,6 @@
       height: 100vh;
       object-fit: cover;
     }
-    #fake-close {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      z-index: 10000;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      font-size: 1.5rem;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      backdrop-filter: blur(4px);
-    }
-    #fake-close:hover { background: rgba(255,255,255,0.25); }
-
     /* fade-in animation for portfolio */
     .fade-in {
       animation: fadeIn 0.6s ease-out both;
@@ -240,7 +219,9 @@
 
   <!-- The trap -->
   <div id="rickroll"></div>
-  <div id="fake-close">&times;</div>
+
+  <!-- Preload video hidden -->
+  <video id="rick-vid" src="rick-small.mp4" loop playsinline preload="auto" style="display:none"></video>
 
   <script>
     // Trap the back button
@@ -250,37 +231,27 @@
       history.pushState(null, '', location.href);
     });
 
-    // Spring the rickroll after 3 seconds
-    setTimeout(function () {
+    // Any click on the portfolio triggers the rickroll WITH sound
+    var triggered = false;
+    document.addEventListener('click', function () {
+      if (triggered) return;
+      triggered = true;
+
       var overlay = document.getElementById('rickroll');
+      var vid = document.getElementById('rick-vid');
+
+      // This click is a user gesture — browser allows unmuted playback
+      vid.muted = false;
+      vid.style.display = '';
+      overlay.appendChild(vid);
       overlay.style.display = 'flex';
-      overlay.innerHTML = '<video src="rick-small.mp4" autoplay loop playsinline muted></video>';
-      var vid = overlay.querySelector('video');
       vid.play();
-
-      // Show fake close button after a beat
-      var closeBtn = document.getElementById('fake-close');
-      setTimeout(function() { closeBtn.style.display = 'flex'; }, 800);
-
-      // Clicking the X unmutes instead of closing
-      closeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        vid.muted = false;
-        closeBtn.style.display = 'none';
-        // Show it again after 2s so he keeps trying
-        setTimeout(function() { closeBtn.style.display = 'flex'; }, 2000);
-      });
-
-      // Clicking anywhere else also unmutes
-      document.addEventListener('click', function() {
-        vid.muted = false;
-      }, { once: true });
 
       // Block escape key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') e.preventDefault();
       });
-    }, 3000);
+    });
   </script>
 
 </body>
